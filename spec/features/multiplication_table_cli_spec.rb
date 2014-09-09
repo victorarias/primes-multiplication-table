@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe "Multiplication table CLI" do
-  context "with no arguments" do
-    let(:cli_path) { "bin/primes-table" }
+  let(:cli_path) { "bin/primes-table" }
 
+  context "with no arguments" do
     it "prints the multiplication table of the first 10 primes" do
       table = run_cli_and_read_output
 
@@ -22,11 +22,29 @@ describe "Multiplication table CLI" do
       EOS
     )
     end
+  end
 
-    def run_cli_and_read_output
-      IO.popen(cli_path) do |io|
-        return io.readlines.join
-      end
+  context "with --first 5" do
+    it "prints the multiplication table of the first 5 primes" do
+      pending "real implementation"
+
+      table = run_cli_and_read_output("--first 5")
+
+      expect(table).to eq(<<-EOS
+    |   2 |   3 |   5 |   7 |  11
+  2 |   4 |   6 |  10 |  14 |  22
+  3 |   6 |   9 |  15 |  21 |  33
+  5 |  10 |  15 |  25 |  35 |  55
+  7 |  14 |  21 |  35 |  49 |  77
+ 11 |  22 |  33 |  55 |  77 | 121
+      EOS
+    )
+    end
+  end
+
+  def run_cli_and_read_output(args = nil)
+    IO.popen("#{cli_path} #{args}") do |io|
+      return io.readlines.join
     end
   end
 end
