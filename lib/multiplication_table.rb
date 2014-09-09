@@ -3,6 +3,10 @@ require "multiplication_table/times"
 require "multiplication_table/renderer"
 
 class MultiplicationTable
+  def self.render
+    MultiplicationTable.new.render
+  end
+
   def header
     primes
   end

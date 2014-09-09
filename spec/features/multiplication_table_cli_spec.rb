@@ -7,7 +7,6 @@ describe "Multiplication table CLI" do
     it "prints the multiplication table of the first 10 primes" do
       table = run_cli_and_read_output
 
-      pending "real implementation"
       expect(table).to eq(<<-EOS
     |   2 |   3 |   5 |   7 |  11 |  13 |  17 |  19 |  23 |  29
   2 |   4 |   6 |  10 |  14 |  22 |  26 |  34 |  38 |  46 |  58
