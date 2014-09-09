@@ -13,14 +13,6 @@ class MultiplicationTable
 
     private
 
-    def width
-      @width ||= lines.flatten.max.to_s.size
-    end
-
-    def separator
-      " | "
-    end
-
     def header
       @table.header
     end
@@ -31,6 +23,14 @@ class MultiplicationTable
 
     def format(values)
       values.map { |n| n.to_s.rjust(width) }.join(separator)
+    end
+
+    def separator
+      " | "
+    end
+
+    def width
+      @width ||= lines.flatten.max.to_s.size
     end
   end
 end
