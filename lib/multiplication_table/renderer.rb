@@ -5,13 +5,10 @@ class MultiplicationTable
     end
 
     def render
-      rendered_header = [ " ", *header ].map { |n| n.to_s.rjust(width) }.join(separator)
+      rendered_header = format [ " ", *header ]
+      rendered_lines = calculate.map { |line| format line }
 
-      rendered_lines = calculate.map { |line|
-        line.map { |n| n.to_s.rjust(width) }.join(separator)
-      }.join("\n")
-
-      [ rendered_header, "\n", rendered_lines ].join
+      [ rendered_header, *rendered_lines ].join("\n")
     end
 
     private
@@ -30,6 +27,10 @@ class MultiplicationTable
 
     def calculate
       @table.calculate
+    end
+
+    def format(values)
+      values.map { |n| n.to_s.rjust(width) }.join(separator)
     end
   end
 end
