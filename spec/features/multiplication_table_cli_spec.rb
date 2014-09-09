@@ -26,8 +26,6 @@ describe "Multiplication table CLI" do
 
   context "with --first 5" do
     it "prints the multiplication table of the first 5 primes" do
-      pending "real implementation"
-
       table = run_cli_and_read_output("--first 5")
 
       expect(table).to eq(<<-EOS
