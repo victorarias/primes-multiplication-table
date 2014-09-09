@@ -1,5 +1,6 @@
 require "primes"
 require "multiplication_table/times"
+require "multiplication_table/renderer"
 
 class MultiplicationTable
   def header
@@ -7,7 +8,11 @@ class MultiplicationTable
   end
 
   def calculate
-    primes.map { |prime| Times.of(prime).with(primes) }
+    @calculate ||= primes.map { |prime| Times.of(prime).with(primes) }
+  end
+
+  def render
+    Renderer.new(self).render
   end
 
   private
