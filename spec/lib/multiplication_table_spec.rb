@@ -22,7 +22,7 @@ describe MultiplicationTable, "#calculate" do
     expect(lines.count).to eq(10)
 
     primes.zip(lines).each do |prime, multiples|
-      expect(multiples).to eq(MultiplicationTable::TimesTable.of(prime).with(primes))
+      expect(multiples).to eq(MultiplicationTable::Times.of(prime).with(primes))
     end
   end
 end
