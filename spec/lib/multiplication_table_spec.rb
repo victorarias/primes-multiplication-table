@@ -3,23 +3,25 @@ require "multiplication_table"
 require "primes"
 
 describe MultiplicationTable, "#header" do
-  let(:table) { MultiplicationTable.new }
+  let(:number_of_primes) { 3 }
+  let(:table) { MultiplicationTable.new(number_of_primes) }
 
-  it "is a the list of the first 10 primes" do
-    primes = Primes.first
+  it "is a the list of primes" do
+    primes = Primes.first(number_of_primes)
 
     expect(table.header).to eq(primes)
   end
 end
 
 describe MultiplicationTable, "#calculate" do
-  let(:table) { MultiplicationTable.new }
-  let(:primes) { Primes.first }
+  let(:number_of_primes) { 3 }
+  let(:table) { MultiplicationTable.new(number_of_primes) }
+  let(:primes) { Primes.first(number_of_primes) }
 
-  it "is the times table of the first 10 primes with themselves" do
+  it "is the times table of the first given primes with themselves" do
     lines = table.calculate
 
-    expect(lines.count).to eq(10)
+    expect(lines.count).to eq(number_of_primes)
 
     primes.zip(lines).each do |prime, multiples|
       expect(multiples).to eq(MultiplicationTable::Times.of(prime).with(primes))
