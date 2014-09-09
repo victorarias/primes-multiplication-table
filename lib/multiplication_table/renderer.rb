@@ -6,7 +6,7 @@ class MultiplicationTable
 
     def render
       rendered_header = format [ " ", *header ]
-      rendered_lines = calculate.map { |line| format line }
+      rendered_lines = lines.map { |line| format line }
 
       [ rendered_header, *rendered_lines ].join("\n")
     end
@@ -14,7 +14,7 @@ class MultiplicationTable
     private
 
     def width
-      3
+      @width ||= lines.flatten.max.to_s.size
     end
 
     def separator
@@ -25,7 +25,7 @@ class MultiplicationTable
       @table.header
     end
 
-    def calculate
+    def lines
       @table.calculate
     end
 

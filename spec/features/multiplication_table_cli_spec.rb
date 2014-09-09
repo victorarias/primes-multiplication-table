@@ -44,8 +44,6 @@ describe "Multiplication table CLI" do
     it "prints the multiplication table of the first 30 primes" do
       table = run_cli_and_read_output("--first 30")
 
-      pending "real prime numbers generation"
-
       expect(table.chomp).to end_with("| 12769")
     end
   end
