@@ -40,6 +40,16 @@ describe "Multiplication table CLI" do
     end
   end
 
+  context "with --first 30" do
+    it "prints the multiplication table of the first 30 primes" do
+      table = run_cli_and_read_output("--first 30")
+
+      pending "real prime numbers generation"
+
+      expect(table.chomp).to end_with("| 12769")
+    end
+  end
+
   def run_cli_and_read_output(args = nil)
     IO.popen("#{cli_path} #{args}") do |io|
       return io.readlines.join
