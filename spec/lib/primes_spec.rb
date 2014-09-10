@@ -1,6 +1,6 @@
 require "spec_helper"
-require "primes"
 
+require "primes"
 require "prime"
 
 shared_examples "a primes list" do

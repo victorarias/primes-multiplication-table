@@ -3,9 +3,11 @@ require 'spec_helper'
 describe "Multiplication table CLI" do
   let(:cli_path) { "bin/primes-table" }
 
-  context "with no arguments" do
+  shared_examples "a primes multiplication table" do
+    let(:arguments) { nil }
+
     it "prints the multiplication table of the first 10 primes" do
-      table = run_cli_and_read_output
+      table = run_cli_and_read_output arguments
 
       expect(table).to eq(<<-EOS
     |   2 |   3 |   5 |   7 |  11 |  13 |  17 |  19 |  23 |  29
@@ -22,6 +24,10 @@ describe "Multiplication table CLI" do
       EOS
     )
     end
+  end
+
+  context "with no arguments" do
+    it_behaves_like "a primes multiplication table"
   end
 
   context "with --first 5" do
@@ -46,6 +52,12 @@ describe "Multiplication table CLI" do
 
       expect(table.chomp).to end_with("| 12769")
     end
+  end
+
+  context "with --native" do
+    let(:arguments) { "--native" }
+
+    it_behaves_like "a primes multiplication table"
   end
 
   def run_cli_and_read_output(args = nil)
