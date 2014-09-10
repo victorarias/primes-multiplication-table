@@ -1,27 +1,29 @@
 module Primes
   class Calculator
-    def initialize(limit)
-      @limit = limit
+    def initialize(up_to)
+      @up_to = up_to
     end
 
     # implementation of the sieve of Eratosthenes
     # http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
     def calculate
-      elements = (0..limit).to_a
-      elements[0] = elements[1] = nil
+      candidates = (0..up_to).to_a
+      candidates[0] = candidates[1] = nil
 
-      elements.each do |elem|
-        next unless elem
-        break if (elem_square = elem ** 2) > limit
+      candidates.each do |candidate|
+        next unless candidate
+        break if (candidate_square = candidate ** 2) > up_to
 
-        elem_square.step(limit, elem) { |step| elements[step] = nil }
+        candidate_square.step(up_to, candidate) do |step|
+          candidates[step] = nil
+        end
       end
 
-      elements.compact
+      candidates.compact
     end
 
     private
 
-    attr_reader :limit
+    attr_reader :up_to
   end
 end
