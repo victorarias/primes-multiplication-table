@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe "Multiplication table CLI" do
   let(:cli_path) { "bin/primes-table" }

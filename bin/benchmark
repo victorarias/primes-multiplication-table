@@ -3,7 +3,7 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "../lib"))
 
 require "primes"
-require 'benchmark'
+require "benchmark"
 
 count = 100000
 
