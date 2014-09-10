@@ -1,7 +1,7 @@
 primes-multiplication-table
 ===========================
 
-Command line program to generate a multiplication table of the first 10 prime numbers.
+Command line program to generate a multiplication table of the first 10 prime numbers. The size of the table (number of primes) can be customized using the `--size` parameter. Ex: `bin/primes-table --size 30`.
 
 # Setup
 
