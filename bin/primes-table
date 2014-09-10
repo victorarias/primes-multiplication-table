@@ -2,9 +2,6 @@
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "../lib"))
 
-require 'cli_options'
-require "multiplication_table"
+require "multiplication_table_cli"
 
-options = CLIOptions.new(ARGV)
-
-puts MultiplicationTable.render(options.number_of_primes)
+MultiplicationTableCli.run
