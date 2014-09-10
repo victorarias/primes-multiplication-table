@@ -1,12 +1,21 @@
 require "primes/calculator"
+require "primes/native/primes_native_calculator"
 
 module Primes
   DEFAULT_NUMBER_OF_PRIMES = 10
 
-  def self.first(count = DEFAULT_NUMBER_OF_PRIMES)
+  def self.first(count = DEFAULT_NUMBER_OF_PRIMES, native: false)
     # TODO: add native calculation
     # TODO: add readme
-    PrimesEnumerable.new.first(count)
+    calculator(native).first(count)
+  end
+
+  def self.calculator(native)
+    if native
+      PrimesNativeEnumerable.new
+    else
+      PrimesEnumerable.new
+    end
   end
 
   class PrimesEnumerable
@@ -39,6 +48,12 @@ module Primes
 
       old_highest_index = @primes.index(max_checked)
       @primes = @primes.slice(old_highest_index + 1..-1)
+    end
+  end
+
+  class PrimesNativeEnumerable < PrimesEnumerable
+    def calculate_primes
+      @primes = PrimesNativeCalculator.calculate(@limit)
     end
   end
 end
