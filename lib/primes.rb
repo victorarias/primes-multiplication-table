@@ -5,8 +5,6 @@ module Primes
   DEFAULT_NUMBER_OF_PRIMES = 10
 
   def self.first(count = DEFAULT_NUMBER_OF_PRIMES, native: false)
-    # TODO: add native calculation
-    # TODO: add readme
     calculator(native).first(count)
   end
 
