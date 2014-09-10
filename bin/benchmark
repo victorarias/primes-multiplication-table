@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "../lib"))
+
+require "primes"
+require 'benchmark'
+
+count = 100000
+
+Benchmark.bm(10) do |x|
+  x.report("ruby:")   { Primes.first(count, native: false) }
+  x.report("native:") { Primes.first(count, native: true) }
+end
