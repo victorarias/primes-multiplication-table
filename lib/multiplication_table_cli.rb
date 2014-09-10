@@ -1,5 +1,6 @@
-require 'cli_options'
+require "cli_options"
 require "multiplication_table"
+require "primes"
 
 class MultiplicationTableCli
   def self.run
@@ -7,8 +8,16 @@ class MultiplicationTableCli
   end
 
   def run
-    options = CLIOptions.new(ARGV)
+    puts MultiplicationTable.render(primes)
+  end
 
-    puts MultiplicationTable.render(options.number_of_primes)
+  private
+
+  def options
+    @options ||= CLIOptions.new(ARGV)
+  end
+
+  def primes
+    Primes.first(options.number_of_primes, native: options.native?)
   end
 end

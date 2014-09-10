@@ -4,19 +4,18 @@ require "primes"
 
 describe MultiplicationTable, "#header" do
   let(:number_of_primes) { 3 }
-  let(:table) { MultiplicationTable.new(number_of_primes) }
+  let(:primes) { Primes.first(number_of_primes) }
+  let(:table) { MultiplicationTable.new(primes) }
 
   it "is a the list of primes" do
-    primes = Primes.first(number_of_primes)
-
-    expect(table.header).to eq(primes)
+    expect(table.header).to eq(Primes.first(number_of_primes))
   end
 end
 
 describe MultiplicationTable, "#calculate" do
-  let(:number_of_primes) { 3 }
-  let(:table) { MultiplicationTable.new(number_of_primes) }
-  let(:primes) { Primes.first(number_of_primes) }
+  let(:primes) { Primes.first(10) }
+  let(:table) { MultiplicationTable.new(primes) }
+  let(:number_of_primes) { primes.count }
 
   it "is the times table of the first given primes with themselves" do
     lines = table.calculate
@@ -30,7 +29,8 @@ describe MultiplicationTable, "#calculate" do
 end
 
 describe MultiplicationTable, "#render" do
-  let(:table) { MultiplicationTable.new }
+  let(:primes) { Primes.first(10) }
+  let(:table) { MultiplicationTable.new(primes) }
 
   it "renders the table" do
     expect(table.render).to match /<<-EOS
