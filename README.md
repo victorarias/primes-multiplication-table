@@ -27,3 +27,13 @@ Command line program to generate a multiplication table of the first 10 prime nu
 
 - `--first N` to customize the number of primes used to generate the table.
 - `--native` to use a native prime number calculator.
+
+# Benchmark
+
+I added a really naive benchmark to measure the performance difference between the two implementations of the Sieve of Eratosthenes (Ruby vs C).
+
+    bin/benchmark
+    
+                     user     system      total        real
+    ruby:        0.590000   0.020000   0.610000 (  0.610145)
+    native:      0.050000   0.010000   0.060000 (  0.060847)
