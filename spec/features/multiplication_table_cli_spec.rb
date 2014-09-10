@@ -30,9 +30,9 @@ describe "Multiplication table CLI" do
     it_behaves_like "a primes multiplication table"
   end
 
-  context "with --first 5" do
-    it "prints the multiplication table of the first 5 primes" do
-      table = run_cli_and_read_output("--first 5")
+  context "with --size 5" do
+    it "prints the multiplication table of size 5" do
+      table = run_cli_and_read_output("--size 5")
 
       expect(table).to eq(<<-EOS
     |   2 |   3 |   5 |   7 |  11
@@ -46,9 +46,9 @@ describe "Multiplication table CLI" do
     end
   end
 
-  context "with --first 30" do
-    it "prints the multiplication table of the first 30 primes" do
-      table = run_cli_and_read_output("--first 30")
+  context "with --size 30" do
+    it "prints the multiplication table of size 30" do
+      table = run_cli_and_read_output("--size 30")
 
       expect(table.chomp).to end_with("| 12769")
     end

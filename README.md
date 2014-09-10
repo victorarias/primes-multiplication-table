@@ -25,7 +25,7 @@ Command line program to generate a multiplication table of the first 10 prime nu
 
 # Options
 
-- `--first N` to customize the number of primes used to generate the table.
+- `--size N` to customize the number of primes used to generate the table.
 - `--native` to use a native prime number calculator.
 
 # Benchmark

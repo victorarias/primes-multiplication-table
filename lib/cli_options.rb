@@ -26,8 +26,8 @@ class CLIOptions
     opts = {}
 
     OptionParser.new.tap do |parser|
-      parser.on("-f", "--first [NUMBER_OF_PRIMES]", "Number of primes to use") { |number| opts[:number_of_primes] = Integer(number) }
-      parser.on("-n", "--native", "Use native primes calculator") { opts[:native?] = true }
+      parser.on("-s", "--size [NUMBER_OF_PRIMES]") { |number| opts[:number_of_primes] = Integer(number) }
+      parser.on("-n", "--native") { opts[:native?] = true }
 
       parser.parse(args)
     end

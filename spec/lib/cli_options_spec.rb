@@ -8,8 +8,8 @@ describe CLIOptions, "#number_of_primes" do
     expect(options.number_of_primes).to eq(10)
   end
 
-  context "with '--first 5'" do
-    let(:args) { [ "--first", "5" ] }
+  context "with '--size 5'" do
+    let(:args) { [ "--size", "5" ] }
 
     it "is 5" do
       options = CLIOptions.new(args)
