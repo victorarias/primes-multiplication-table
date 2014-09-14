@@ -30,10 +30,10 @@ Command line program to generate a multiplication table of the first 10 prime nu
 
 # Benchmark
 
-I added a benchmark to measure the performance difference between the two implementations of the Sieve of Eratosthenes (Ruby vs C).
+I added a benchmark to measure the performance difference between the two implementations of the Sieve of Eratosthenes (Ruby vs C). The C implementation is only ~2.5x faster (as opposed to 15x) because it always recalculates from the beginning, ignoring the existing known primes to sieve.
+
 
     bin/benchmark
-    
-                     user     system      total        real
-    Ruby:        5.690000   0.190000   5.880000 (  5.869858)
-    C:           0.410000   0.090000   0.500000 (  0.497066)
+                 user     system      total        real
+    Ruby:        1.460000   0.060000   1.520000 (  1.516909)
+    C:           0.560000   0.060000   0.620000 (  0.617725)
