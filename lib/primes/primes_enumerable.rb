@@ -30,8 +30,10 @@ module Primes
   end
 
   class PrimesNativeEnumerable < BasePrimesEnumerable
+    INITIAL_LIMIT = 29
+
     def initialize
-      @primes = PrimesNativeCalculator.calculate(10)
+      @primes = PrimesNativeCalculator.calculate(INITIAL_LIMIT)
     end
 
     def get_nth_prime(position)
