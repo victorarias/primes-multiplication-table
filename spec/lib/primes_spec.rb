@@ -21,7 +21,7 @@ end
 describe Primes do
   context "with no argument" do
     it "returns the first 10 primes" do
-      primes = described_class.first
+      primes = Primes.first
 
       expect(primes).to eq([ 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 ])
     end

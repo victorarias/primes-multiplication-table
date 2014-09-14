@@ -5,49 +5,41 @@ module Primes
   class BasePrimesEnumerable
     include Enumerable
 
-    def initialize
-      @limit = 10 # initial
-      calculate_primes
-    end
-
     def each(&blk)
+      idx = 0
+
       loop do
-        @primes.each { |prime| blk.call(prime) }
-        find_more_primes
+        blk.call(get_nth_prime(idx))
+        idx += 1
       end
-    end
-
-    private
-
-    def calculate_primes
-      raise "implement me"
-    end
-
-    def find_more_primes
-      max_found = @primes.last
-      @limit = @limit * 2
-
-      # TODO: could be optimized to not recalculate from zero.
-      calculate_primes
-
-      remove_primes_up_to(max_found)
-    end
-
-    def remove_primes_up_to(number)
-      index = @primes.index(number)
-      @primes = @primes.slice(index + 1..-1)
     end
   end
 
   class PrimesEnumerable < BasePrimesEnumerable
-    def calculate_primes
-      @primes = Primes::Calculator.new(@limit).calculate
+    def initialize
+      @calculator = Primes::Calculator.new
     end
+
+    private
+
+    def get_nth_prime(position)
+      calculator.get_nth(position)
+    end
+
+    attr_reader :calculator
   end
 
   class PrimesNativeEnumerable < BasePrimesEnumerable
-    def calculate_primes
-      @primes = PrimesNativeCalculator.calculate(@limit)
+    def initialize
+      @primes = PrimesNativeCalculator.calculate(10)
+    end
+
+    def get_nth_prime(position)
+      while position >= @primes.count
+        @primes = PrimesNativeCalculator.calculate(@primes.last * 2)
+      end
+
+      @primes[position]
     end
   end
 end
